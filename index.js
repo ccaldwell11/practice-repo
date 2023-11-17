@@ -98,7 +98,7 @@ function filterByMedication(array, medication){
   return justNames; //returns the array with the newly pushed names of animals using the searched for medication
 }
 
-console.log(filterByMedication(pets, 'Gabepentin'))
+console.log(filterByMedication(pets, 'Gabepentin'));
 
 //I realized I was assigning the result of using the methods to a variable when it was unecessary. I kept the first problem to show what I was doing.
 // Problem #2 //
@@ -113,7 +113,7 @@ function speciesAndNumberOfMedications(array, species){
   })
 }
 
-console.log(speciesAndNumberOfMedications(pets, 'cat'))
+console.log(speciesAndNumberOfMedications(pets, 'cat'));
 
 
 // Problem #3 //
@@ -130,7 +130,7 @@ function getDailyFrequency(array){
   return dailyMeds; 
 }
 
-console.log(createStrings(pets))
+console.log(createStrings(pets));
 
 
 // Problem #4 // ** M.A.P. **
@@ -145,23 +145,52 @@ function createStrings(array){
   });
 }
 
-console.log(createStrings(pets))
+console.log(createStrings(pets));
 
 
 // Problem #5 //
 function reduceSpecies(array, species){
-  return pet.reduce
+  return pets.reduce(function(acc, pet){
+    if(pet.species === species){ 
+      acc.push({name: pet.name, species: pet.species, age: pet.age}); //pushes objects of each animal that matches the species name and formats it in this syntax
+    }
+    return acc;
+  }, []);
 }
+
+console.log(reduceSpecies(pets, 'cats'));
+
 
 // Problem #6 //
+//very similar to number 4
 function namesAndMedications(array){
-
+  return pets.map(function(pet) {
+    let treatments = pet.treatments.map(function (treatment) {
+      return treatment.name; //accesses pets' treatments
+    });
+    return `${pet.name} - ${treatments.join(',')}`;
+  });
 }
+
+console.log(namesAndMedications(pets));
+
 
 // Problem #7 //
 function filterByDailyFrequency(array){
-
+  return pets.filter(function(pet){ 
+    for(let treatment of pet.treatments){ 
+      if(treatment.frequency === 'Daily'){ 
+        return pets; //similar comments to number 2
+      }
+    }
+  })
+  .map(function(pet){ //i knew how to properly chain this method but if i didn't get reminded of this by problem 4, then I would've spend more time debugging
+    return pet.name 
+  })
 }
+
+console.log(filterByDailyFrequency(pets));
+
 
 // Problem #8 // 
 function createEntriesByLocation(array, location){
