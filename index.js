@@ -130,7 +130,7 @@ function getDailyFrequency(array){
   return dailyMeds; 
 }
 
-console.log(createStrings(pets));
+console.log(getDailyFrequency(pets))
 
 
 // Problem #4 // ** M.A.P. **
@@ -158,7 +158,7 @@ function reduceSpecies(array, species){
   }, []);
 }
 
-console.log(reduceSpecies(pets, 'cats'));
+console.log(reduceSpecies(pets, 'cat'));
 
 
 // Problem #6 //
