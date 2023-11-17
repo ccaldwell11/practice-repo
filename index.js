@@ -168,7 +168,7 @@ function namesAndMedications(array){
     let treatments = pet.treatments.map(function (treatment) {
       return treatment.name; //accesses pets' treatments
     });
-    return `${pet.name} - ${treatments.join(',')}`;
+    return `${pet.name} - ${treatments.join(', ')}`; // returns each pet seperated by a comma with a space at the end so they are not touching the comma of the previous med name
   });
 }
 
@@ -184,7 +184,7 @@ function filterByDailyFrequency(array){
       }
     }
   })
-  .map(function(pet){ //i knew how to properly chain this method but if i didn't get reminded of this by problem 4, then I would've spend more time debugging
+  .map(function(pet){ //i knew how to properly chain this method but if i didn't get reminded of this by problem 4, then I would've spend more time debugging (i would get confused chaining them in the traditional way)
     return pet.name 
   })
 }
@@ -194,7 +194,16 @@ console.log(filterByDailyFrequency(pets));
 
 // Problem #8 // 
 function createEntriesByLocation(array, location){
-  
+  return pets.filter(function(pet){
+    if(pet.location === location){
+      return pet;
+    }
+  })
+  .map(function(pet){
+    return [pet.name, pet.species]; //similar to problem 5. each pet that matches location with the parameter will be returned in a syntax like this
+  })
 }
+
+console.log(createEntriesByLocation(pets, 'New Orleans, LA')) //was confused for the longest because the example didn't have the 'LA' part added!! lol
 
 
